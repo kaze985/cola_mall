@@ -1,0 +1,9 @@
+package com.lppnb.brand.dto;
+
+import com.lppnb.brand.dto.data.PmsBrandDTO;
+import lombok.Data;
+
+@Data
+public class PmsBrandAddCmd {
+    private PmsBrandDTO pmsBrandDTO;
+}

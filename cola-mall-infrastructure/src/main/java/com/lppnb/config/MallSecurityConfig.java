@@ -1,8 +1,8 @@
 package com.lppnb.config;
 
-import com.lppnb.UmsAdmin.api.UmsAdminService;
-import com.lppnb.UmsResource.api.UmsResourceService;
-import com.lppnb.UmsResource.dto.UmsResourceDTO;
+import com.lppnb.admin.api.UmsAdminService;
+import com.lppnb.resource.api.UmsResourceService;
+import com.lppnb.resource.dto.UmsResourceDTO;
 import com.lppnb.component.DynamicSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,14 +22,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MallSecurityConfig {
 
     @Autowired
-    private UmsAdminService adminService;
+    private UmsAdminService umsAdminService;
     @Autowired
-    private UmsResourceService resourceService;
+    private UmsResourceService umsResourceService;
 
     @Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return username -> adminService.loadUserByUsername(username);
+        return username -> umsAdminService.loadUserByUsername(username);
     }
 
     @Bean
@@ -37,8 +37,8 @@ public class MallSecurityConfig {
         return new DynamicSecurityService() {
             @Override
             public Map<String, ConfigAttribute> loadDataSource() {
-                Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
-                List<UmsResourceDTO> resourceList = resourceService.listAll();
+                List<UmsResourceDTO> resourceList = umsResourceService.listAll();
+                Map<String, ConfigAttribute> map = new ConcurrentHashMap<>(resourceList.size());
                 for (UmsResourceDTO resource : resourceList) {
                     map.put(resource.getUrl(), new org.springframework.security.access.SecurityConfig(resource.getId() + ":" + resource.getName()));
                 }

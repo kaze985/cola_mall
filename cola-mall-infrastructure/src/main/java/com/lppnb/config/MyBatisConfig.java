@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration;
  * MyBatis配置类
  */
 @Configuration
-@MapperScan({"com.lppnb.mbg.mapper","com.lppnb.dao"})
+@MapperScan({"com.lppnb.generator.mapper","com.lppnb.dao"})
 public class MyBatisConfig {
 }

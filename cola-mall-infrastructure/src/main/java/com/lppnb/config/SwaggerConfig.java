@@ -22,8 +22,7 @@ public class SwaggerConfig {
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .tags(  new Tag("PmsBrandController", "商品品牌管理"),
-                        new Tag("UmsAdminController", "后台用户管理"))
+                .tags(new Tag("PmsBrandController", "商品品牌管理"), new Tag("UmsAdminController", "后台用户管理"))
                 .select()
                 //为当前包下controller生成API文档
                 .apis(RequestHandlerSelectors.basePackage("com.lppnb"))
@@ -58,14 +57,14 @@ public class SwaggerConfig {
     private List<SecurityContext> securityContexts() {
         //设置需要登录认证的路径
         List<SecurityContext> result = new ArrayList<>();
-        result.add(getContextByPath("/brand/.*"));
+        result.add(getContextByPath("/*/.*"));
         return result;
     }
 
     private SecurityContext getContextByPath(String pathRegex) {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.regex(pathRegex))
+                .operationSelector((context) -> PathSelectors.regex(pathRegex).test(context.requestMappingPattern()))
                 .build();
     }
 

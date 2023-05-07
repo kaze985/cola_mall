@@ -9,6 +9,7 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.*;
 
 /**
@@ -24,7 +25,7 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
     public void loadDataSource() {
         configAttributeMap = dynamicSecurityService.loadDataSource();
     }
-
+    @PreDestroy
     public void clearDataSource() {
         configAttributeMap.clear();
         configAttributeMap = null;
@@ -32,7 +33,9 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
-        if (configAttributeMap == null) this.loadDataSource();
+        if (configAttributeMap == null) {
+            this.loadDataSource();
+        }
         List<ConfigAttribute> configAttributes = new ArrayList<>();
         //获取当前访问的路径
         String url = ((FilterInvocation) o).getRequestUrl();
@@ -52,7 +55,7 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
     @Override
     public Collection<ConfigAttribute> getAllConfigAttributes() {
-        return null;
+        return configAttributeMap.values();
     }
 
     @Override

@@ -16,7 +16,7 @@ spring:
 mybatis:
   mapper-locations:
     - classpath:mybatis/*.xml
-    - classpath*:com/**/mapper/*.xml
+    - classpath*:mapper/*.xml
 
 # 自定义jwt key
 jwt:
