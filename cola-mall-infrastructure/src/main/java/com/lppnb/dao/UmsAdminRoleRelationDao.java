@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 后台用户与角色关系管理自定义Dao
- * @author one
+ * @author kaze
  */
 @Mapper
 public interface UmsAdminRoleRelationDao {

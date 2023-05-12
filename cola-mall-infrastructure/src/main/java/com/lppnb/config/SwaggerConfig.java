@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * SwaggerAPI文档的配置
+ * @author kaze
  */
 @Configuration
 public class SwaggerConfig {

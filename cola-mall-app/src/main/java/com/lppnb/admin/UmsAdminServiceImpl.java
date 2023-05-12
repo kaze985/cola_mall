@@ -10,9 +10,8 @@ import com.lppnb.generator.dataobject.UmsAdminDO;
 import com.lppnb.generator.dataobject.UmsResourceDO;
 import com.lppnb.generator.mapper.UmsAdminMapper;
 import com.lppnb.resource.dto.UmsResourceDTO;
-import com.lppnb.utils.JwtTokenUtil;
+import com.lppnb.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -22,20 +21,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 
+/**
+ * @author kaze
+ */
 @Slf4j
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
 
-    @Autowired
+    @Resource
     private JwtTokenUtil jwtTokenUtil;
-    @Autowired
+    @Resource
     private PasswordEncoder passwordEncoder;
-    @Autowired
+    @Resource
     private UmsAdminMapper adminMapper;
-    @Autowired
+    @Resource
     private UmsAdminRoleRelationDao adminRoleRelationDao;
 
     @Override

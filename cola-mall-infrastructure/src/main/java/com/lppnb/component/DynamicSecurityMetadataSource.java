@@ -1,7 +1,6 @@
 package com.lppnb.component;
 
 import cn.hutool.core.util.URLUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
@@ -10,15 +9,17 @@ import org.springframework.util.PathMatcher;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 import java.util.*;
 
 /**
  * 动态权限数据源，用于获取动态权限规则
+ * @author kaze
  */
 public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     private static Map<String, ConfigAttribute> configAttributeMap = null;
-    @Autowired
+    @Resource
     private DynamicSecurityService dynamicSecurityService;
 
     @PostConstruct
@@ -41,10 +42,8 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
         String url = ((FilterInvocation) o).getRequestUrl();
         String path = URLUtil.getPath(url);
         PathMatcher pathMatcher = new AntPathMatcher();
-        Iterator<String> iterator = configAttributeMap.keySet().iterator();
         //获取访问该路径所需资源
-        while (iterator.hasNext()) {
-            String pattern = iterator.next();
+        for (String pattern : configAttributeMap.keySet()) {
             if (pathMatcher.match(pattern, path)) {
                 configAttributes.add(configAttributeMap.get(pattern));
             }

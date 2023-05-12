@@ -6,21 +6,23 @@ import com.lppnb.common.ResultCode;
 import com.lppnb.admin.api.UmsAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 后台用户管理
+ * @author kaze
  */
 @RestController
 @Api(tags = "UmsAdminController")
 @RequestMapping("/admin")
 public class UmsAdminController {
-    @Autowired
+    @Resource
     private UmsAdminService adminService;
 
     @Value("${jwt.tokenHeader}")

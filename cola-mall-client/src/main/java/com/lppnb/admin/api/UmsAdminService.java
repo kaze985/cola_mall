@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 后台用于管理Service
+ * @author kaze
  */
 public interface UmsAdminService {
     /**

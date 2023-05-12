@@ -1,4 +1,4 @@
-package com.lppnb.utils;
+package com.lppnb.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,6 +13,7 @@ import java.util.Map;
 
 /**
  * JwtToken生成的工具类
+ * @author kaze
  */
 @Slf4j
 public class JwtTokenUtil {

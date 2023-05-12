@@ -5,9 +5,9 @@ import com.lppnb.generator.dataobject.UmsResourceDO;
 import com.lppnb.generator.mapper.UmsResourceMapper;
 import com.lppnb.resource.api.UmsResourceService;
 import com.lppnb.resource.dto.UmsResourceDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service
 public class UmsResourceServiceImpl implements UmsResourceService {
-    @Autowired
+    @Resource
     private UmsResourceMapper resourceMapper;
 
     @Override

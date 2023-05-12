@@ -1,7 +1,6 @@
 package com.lppnb.component;
 
 import com.lppnb.config.IgnoreUrlsConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
@@ -11,27 +10,29 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
 
+import javax.annotation.Resource;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
  * 动态权限过滤器，用于实现基于路径的动态权限过滤
+ * @author kaze
  */
 public class DynamicSecurityFilter extends AbstractSecurityInterceptor implements Filter {
 
-    @Autowired
+    @Resource
     private DynamicSecurityMetadataSource dynamicSecurityMetadataSource;
-    @Autowired
+    @Resource
     private IgnoreUrlsConfig ignoreUrlsConfig;
 
-    @Autowired
+    @Resource
     public void setMyAccessDecisionManager(DynamicAccessDecisionManager dynamicAccessDecisionManager) {
         super.setAccessDecisionManager(dynamicAccessDecisionManager);
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override

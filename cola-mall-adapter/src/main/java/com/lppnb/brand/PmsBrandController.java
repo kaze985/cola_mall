@@ -10,8 +10,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 
 @Api(tags = "PmsBrandController")
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/brand")
 public class PmsBrandController {
-    @Autowired
+    @Resource
     private PmsBrandService pmsBrandService;
 
     @ApiOperation("添加品牌")

@@ -11,20 +11,24 @@ import com.lppnb.brand.exector.PmsBrandDeleteCmdExe;
 import com.lppnb.brand.exector.PmsBrandUpdateCmdExe;
 import com.lppnb.brand.exector.query.PmsBrandGetQryExe;
 import com.lppnb.brand.exector.query.PmsBrandPageQryExe;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
+/**
+ * @author kaze
+ */
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
-    @Autowired
+    @Resource
     private PmsBrandAddCmdExe pmsBrandAddCmdExe;
-    @Autowired
+    @Resource
     private PmsBrandDeleteCmdExe pmsBrandDeleteCmdExe;
-    @Autowired
+    @Resource
     private PmsBrandUpdateCmdExe pmsBrandUpdateCmdExe;
-    @Autowired
+    @Resource
     private PmsBrandGetQryExe pmsBrandGetQryExe;
-    @Autowired
+    @Resource
     private PmsBrandPageQryExe pmsBrandPageQryExe;
 
     @Override

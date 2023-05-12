@@ -7,14 +7,17 @@ import com.lppnb.brand.dto.data.PmsBrandDTO;
 import com.lppnb.convertor.PmsBrandConvertor;
 import com.lppnb.generator.dataobject.PmsBrandDO;
 import com.lppnb.generator.mapper.PmsBrandMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author kaze
+ */
 @Component
 public class PmsBrandPageQryExe {
-    @Autowired
+    @Resource
     private PmsBrandMapper pmsBrandMapper;
     public PageResponse<PmsBrandDTO> execute(PmsBrandPageQry qry) {
         PageHelper.startPage(qry.getPageNum(), qry.getPageSize());

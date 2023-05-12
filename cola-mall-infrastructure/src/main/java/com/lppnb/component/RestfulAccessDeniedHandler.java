@@ -13,12 +13,13 @@ import java.io.IOException;
 
 /**
  * 当访问接口没有权限时，自定义的返回结果
+ * @author kaze
  */
 public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request,
                        HttpServletResponse response,
-                       AccessDeniedException e) throws IOException, ServletException {
+                       AccessDeniedException e) throws IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         response.getWriter().println(JSONUtil.parse(Response.buildFailure(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage())));
