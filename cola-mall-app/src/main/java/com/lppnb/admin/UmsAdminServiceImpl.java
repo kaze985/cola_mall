@@ -2,8 +2,8 @@ package com.lppnb.admin;
 
 import com.lppnb.admin.api.UmsAdminService;
 import com.lppnb.admin.dto.UmsAdminDTO;
-import com.lppnb.convertor.UmsAdminConvertor;
-import com.lppnb.convertor.UmsResourceConvertor;
+import com.lppnb.assembler.UmsAdminAssembler;
+import com.lppnb.assembler.UmsResourceAssembler;
 import com.lppnb.dao.UmsAdminRoleRelationDao;
 import com.lppnb.domain.admin.AdminUserDetails;
 import com.lppnb.generator.dataobject.UmsAdminDO;
@@ -45,7 +45,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     public UmsAdminDTO getAdminByUsername(String username) {
         List<UmsAdminDO> admins = adminMapper.selectByUsername(username);
         if (admins != null && admins.size() > 0) {
-            return UmsAdminConvertor.toDataTransferObject(admins.get(0));
+            return UmsAdminAssembler.ASSEMBLER.toDataTransferObject(admins.get(0));
         }
         return null;
     }
@@ -83,6 +83,6 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public List<UmsResourceDTO> getResourceList(Long adminId) {
         List<UmsResourceDO> resourceList = adminRoleRelationDao.getResourceList(adminId);
-        return UmsResourceConvertor.toDataTransferObjects(resourceList);
+        return UmsResourceAssembler.ASSEMBLER.toDataTransferObjects(resourceList);
     }
 }

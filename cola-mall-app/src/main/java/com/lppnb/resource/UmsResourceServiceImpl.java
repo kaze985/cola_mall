@@ -1,6 +1,6 @@
 package com.lppnb.resource;
 
-import com.lppnb.convertor.UmsResourceConvertor;
+import com.lppnb.assembler.UmsResourceAssembler;
 import com.lppnb.generator.dataobject.UmsResourceDO;
 import com.lppnb.generator.mapper.UmsResourceMapper;
 import com.lppnb.resource.api.UmsResourceService;
@@ -22,6 +22,6 @@ public class UmsResourceServiceImpl implements UmsResourceService {
     @Override
     public List<UmsResourceDTO> listAll() {
         List<UmsResourceDO> umsResources = resourceMapper.selectAll();
-        return UmsResourceConvertor.toDataTransferObjects(umsResources);
+        return UmsResourceAssembler.ASSEMBLER.toDataTransferObjects(umsResources);
     }
 }

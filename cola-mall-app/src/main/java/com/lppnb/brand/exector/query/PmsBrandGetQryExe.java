@@ -1,9 +1,9 @@
 package com.lppnb.brand.exector.query;
 
 import com.alibaba.cola.dto.SingleResponse;
+import com.lppnb.assembler.PmsBrandAssembler;
 import com.lppnb.brand.dto.PmsBrandGetQry;
 import com.lppnb.brand.dto.data.PmsBrandDTO;
-import com.lppnb.convertor.PmsBrandConvertor;
 import com.lppnb.generator.dataobject.PmsBrandDO;
 import com.lppnb.generator.mapper.PmsBrandMapper;
 import org.springframework.stereotype.Component;
@@ -22,6 +22,6 @@ public class PmsBrandGetQryExe {
         if (brandDO == null) {
             return SingleResponse.of(null);
         }
-        return SingleResponse.of(PmsBrandConvertor.toDataTransferObject(brandDO));
+        return SingleResponse.of(PmsBrandAssembler.ASSEMBLER.toDataTransferObject(brandDO));
     }
 }
