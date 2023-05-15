@@ -28,11 +28,19 @@
         </encoder>
     </appender>
 
+    <!--输出到logstash的appender-->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!--可以访问的logstash日志收集端口-->
+        <destination>192.168.43.42:4560</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
     <!--rootLogger是默认的logger-->
     <root level="INFO">
         <!--定义了两个appender，日志会通过往这两个appender里面写-->
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="APPLICATION" />
+        <appender-ref ref="LOGSTASH" />
     </root>
 
     <!--应用日志-->

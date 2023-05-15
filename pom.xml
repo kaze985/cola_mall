@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lppnb</groupId>
@@ -26,6 +26,7 @@
         <pagehelper-starter.version>1.4.6</pagehelper-starter.version>
         <springfox-starter.version>3.0.0</springfox-starter.version>
         <hutool.version>5.8.16</hutool.version>
+        <logstash.version>7.3</logstash.version>
     </properties>
 
     <modules>
@@ -42,11 +43,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
         <!--SpringSecurity依赖配置-->
         <dependency>
@@ -142,7 +138,6 @@
             <!--Validation API End -->
 
 
-
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
@@ -160,6 +155,12 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>mapstruct</artifactId>
+                        <groupId>org.mapstruct</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!--Hutool Java工具包-->
             <dependency>
@@ -172,6 +173,12 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
+            </dependency>
+            <!--集成logstash-->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -196,7 +203,7 @@
                     <version>3.4.0</version>
                 </plugin>
                 <plugin>
-                     <artifactId>maven-deploy-plugin</artifactId>
+                    <artifactId>maven-deploy-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
             </plugins>

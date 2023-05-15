@@ -25,12 +25,6 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>mapstruct</artifactId>
-                    <groupId>org.mapstruct</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--JWT(Json Web Token)登录支持-->
         <dependency>
