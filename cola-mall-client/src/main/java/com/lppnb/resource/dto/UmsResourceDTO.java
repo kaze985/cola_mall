@@ -1,11 +1,12 @@
 package com.lppnb.resource.dto;
 
+import com.alibaba.cola.dto.DTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
 @Data
-public class UmsResourceDTO {
+public class UmsResourceDTO extends DTO {
     private Long id;
 
     @ApiModelProperty(value = "创建时间")

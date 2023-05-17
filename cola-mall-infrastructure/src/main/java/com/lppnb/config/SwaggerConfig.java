@@ -23,7 +23,9 @@ public class SwaggerConfig {
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .tags(new Tag("PmsBrandController", "商品品牌管理"), new Tag("UmsAdminController", "后台用户管理"))
+                .tags(new Tag("PmsBrandController", "商品品牌管理"),
+                        new Tag("UmsAdminController", "后台用户管理"),
+                        new Tag("EsProductController", "搜索商品管理"))
                 .select()
                 //为当前包下controller生成API文档
                 .apis(RequestHandlerSelectors.basePackage("com.lppnb"))

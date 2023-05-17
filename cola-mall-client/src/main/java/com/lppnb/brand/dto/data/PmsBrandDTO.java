@@ -1,10 +1,14 @@
 package com.lppnb.brand.dto.data;
 
+import com.alibaba.cola.dto.DTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * @author kaze
+ */
 @Data
-public class PmsBrandDTO {
+public class PmsBrandDTO extends DTO {
     private Long id;
 
     private String name;

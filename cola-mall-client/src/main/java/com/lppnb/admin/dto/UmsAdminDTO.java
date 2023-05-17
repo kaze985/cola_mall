@@ -1,11 +1,12 @@
 package com.lppnb.admin.dto;
 
+import com.alibaba.cola.dto.DTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
 @Data
-public class UmsAdminDTO {
+public class UmsAdminDTO extends DTO {
     private Long id;
 
     private String username;
