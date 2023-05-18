@@ -1,4 +1,4 @@
-package com.lppnb.nosql.elasticsearch.document;
+package com.lppnb.search.document;
 
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Field;

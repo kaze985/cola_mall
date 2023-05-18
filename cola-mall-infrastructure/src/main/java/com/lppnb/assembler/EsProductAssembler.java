@@ -1,6 +1,6 @@
 package com.lppnb.assembler;
 
-import com.lppnb.nosql.elasticsearch.document.EsProduct;
+import com.lppnb.search.document.EsProduct;
 import com.lppnb.product.dto.EsProductDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

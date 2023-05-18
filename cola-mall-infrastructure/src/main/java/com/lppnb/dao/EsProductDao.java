@@ -1,6 +1,6 @@
 package com.lppnb.dao;
 
-import com.lppnb.nosql.elasticsearch.document.EsProduct;
+import com.lppnb.search.document.EsProduct;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

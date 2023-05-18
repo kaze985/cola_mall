@@ -56,19 +56,19 @@ public class EsProductController {
     @ApiOperation(value = "简单搜索")
     @RequestMapping(value = "/search/simple", method = RequestMethod.GET)
     public PageResponse<EsProductDTO> search(@RequestParam(required = false) String keyword,
-                                             @RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                             @RequestParam(required = false, defaultValue = "0") Integer pageNum,
                                              @RequestParam(required = false, defaultValue = "5") Integer pageSize) {
         return esProductService.search(keyword, pageNum, pageSize);
     }
 
     @ApiOperation(value = "综合搜索、筛选、排序")
     @ApiImplicitParam(name = "sort", value = "排序字段:0->按相关度；1->按新品；2->按销量；3->价格从低到高；4->价格从高到低",
-            defaultValue = "1", allowableValues = "0,1,2,3,4", paramType = "query", dataType = "Integer", dataTypeClass = Integer.class)
+            defaultValue = "0", allowableValues = "0,1,2,3,4", paramType = "query", dataType = "Integer", dataTypeClass = Integer.class)
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public PageResponse<EsProductDTO> search(@RequestParam(required = false) String keyword,
                                              @RequestParam(required = false) Long brandId,
                                              @RequestParam(required = false) Long productCategoryId,
-                                             @RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                             @RequestParam(required = false, defaultValue = "0") Integer pageNum,
                                              @RequestParam(required = false, defaultValue = "5") Integer pageSize,
                                              @RequestParam(required = false, defaultValue = "0") Integer sort) {
         return esProductService.search(keyword, brandId, productCategoryId, pageNum, pageSize, sort);
@@ -77,7 +77,7 @@ public class EsProductController {
     @ApiOperation(value = "根据商品id推荐商品")
     @RequestMapping(value = "/recommend/{id}", method = RequestMethod.GET)
     public PageResponse<EsProductDTO> recommend(@PathVariable Long id,
-                                                         @RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                                         @RequestParam(required = false, defaultValue = "0") Integer pageNum,
                                                          @RequestParam(required = false, defaultValue = "5") Integer pageSize) {
         return esProductService.recommend(id, pageNum, pageSize);
     }
