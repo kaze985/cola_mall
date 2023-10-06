@@ -1,4 +1,4 @@
-package com.lppnb.product;
+package com.lppnb.controller;
 
 import com.alibaba.cola.dto.PageResponse;
 import com.alibaba.cola.dto.SingleResponse;
